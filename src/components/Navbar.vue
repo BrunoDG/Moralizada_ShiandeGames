@@ -1,10 +1,11 @@
 <script setup>
-import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
+import { ref } from 'vue';
+import { RouterLink } from 'vue-router';
+//import { DropdownMenu } from './Dropdown/DropdownMenu.vue';
+//import { DropdownContent } from './Dropdown/DropdownContent.vue'; 
+//import { DropdownItem } from './Dropdown/DropdownItem.vue';
 
-defineProps({
-    title: String,
-})
+const title = ref('ShiandeGames');
 
 </script>
 
@@ -20,7 +21,11 @@ defineProps({
                     class="text-gray-800 border-b-2 border-transparent hover:text dark:hover:text-gray-200 hover:border-indigo-800 mx-1.5 sm:mx-6">Home</a>
 
                 <a href="#"
-                    class="text-gray-800 border-b-2 border-transparent hover:text dark:hover:text-gray-200 hover:border-indigo-800 mx-1.5 sm:mx-6">Consoles</a>
+                    class="text-gray-800 border-b-2 border-transparent hover:text dark:hover:text-gray-200 hover:border-indigo-800 mx-1.5 sm:mx-6"
+                    @click="showConsoleMenu">Consoles</a>
+                <div v-if="active">
+                    Menu
+                </div>
 
                 <a href="#"
                     class="text-gray-800 border-b-2 border-transparent hover:text dark:hover:text-gray-200 hover:border-indigo-800 mx-1.5 sm:mx-6">Contato</a>
