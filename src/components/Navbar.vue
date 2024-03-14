@@ -4,89 +4,115 @@ import { RouterLink } from 'vue-router';
 
 const title = ref('ShiandeGames');
 
-let show = ref(false);
-const isOpen = () => {
-    show.value = !show.value;
-    if (show.value == false) {
-        closeMenu();
-    }
+// Dados do menu
+const isOpen = ref(false)
+const openMenu = () => isOpen.value = !isOpen.value;
+const closeMenu = () => isOpen.value = false;
+const empresas = [
+    {
+        name: 'Nintendo',
+        subtipos: [
+            {
+                name: 'Portáteis', consoles: [
+                    { name: 'GameBoy / GameBoy Color', route: '/consoles/gameboy' },
+                    { name: 'GameBoy Advance', route: '/consoles/GBA' },
+                    { name: 'Nintendo DS', route: '/consoles/nds' },
+                    { name: 'Nintendo 3DS', route: '/consoles/3ds' },]
+            },
+            {
+                name: 'Consoles de Mesa', consoles: [
+                    { name: 'NES / Famicom', route: '/consoles/nes' },
+                    { name: 'Super Nintendo / Super Famicom', route: '/consoles/snes' },
+                    { name: 'Nintendo 64', route: '/consoles/n64' },
+                    { name: 'GameCube', route: '/consoles/gamecube' },]
+            }
+        ]
+    },
+    {
+        name: 'SEGA',
+        subtipos: [
+            {
+                name: 'Portáteis', consoles: [
+                    { name: 'Game Gear', route: '/consoles/gamegear' },
+                ]
+            },
+            {
+                name: 'Consoles de Mesa', consoles: [
+                    { name: 'Master System', route: '/consoles/mastersystem' },
+                    { name: 'Mega Drive', route: '/consoles/megadrive' },
+                    { name: 'Saturn', route: '/consoles/saturn' },
+                    { name: 'Dreamcast', route: '/consoles/dc' },
+                ]
+            }
+        ]
+    },
+    {
+        name: 'Sony',
+        subtipos: [
+            {
+                name: 'Portáteis', consoles: [
+                    { name: 'Playstation Portable (PSP)', route: '/consoles/psp' },
+                    { name: 'Playstation Vita (PSVita)', route: '/consoles/psvita' },
+                ]
+            },
+            {
+                name: 'Consoles de Mesa', consoles: [
+                    { name: 'Playstation / PSOne', route: '/consoles/psone' },
+                    { name: 'Playstation 2', route: '/consoles/ps2' },
+                    { name: 'Playstation 3', route: '/consoles/ps3' },
+                    { name: 'Playstation 4', route: '/consoles/ps4' },
+                ]
+            }
+        ]
+    },
+    {
+        name: 'Panasonic',
+        subtipos: [
+            {
+                name: 'Consoles de Mesa', consoles: [
+                    { name: '3DO', route: '/consoles/3do' },
+                ]
+            }
+        ]
+    },
+    {
+        name: 'NEC',
+        subtipos: [
+            {
+                name: 'Portáteis', consoles: [
+                    { name: 'TurboExpress / PC Engine GT', route: '/consoles/pc-engine-gt' },
+                ]
+            },
+            {
+                name: 'Consoles de Mesa', consoles: [
+                    { name: 'TurboGrafx-16 / PC Engine', route: '/consoles/pc-engine' },
+                    { name: 'PC-FX', route: '/consoles/pc-fx' },
+                ]
+            }
+        ]
+    },
+    
+]
+
+// Estado para controle dos submenus
+const activeEmpresaSubmenu = ref(null)
+const activeSubtipoSubmenu = ref({ empresa: null, subtipo: null })
+
+// Métodos para mostrar e esconder submenus
+const showEmpresaSubmenu = (empresaIndex) => {
+    activeEmpresaSubmenu.value = empresaIndex
 }
 
-// consoles da Nintendo
-let showNintendo = ref(false);
-const isNintendoOpen = () => {
-    closeSubMenus();
-    showNintendo.value = !showNintendo.value;
+const hideEmpresaSubmenu = () => {
+    activeEmpresaSubmenu.value = null
 }
 
-let showNinPort = ref(false);
-const isNinPortOpen = () => {
-    showNinDesk.value = false;
-    showNinPort.value = !showNinPort.value;
+const showSubtipoSubmenu = (empresaIndex, subtipoIndex) => {
+    activeSubtipoSubmenu.value = { empresa: empresaIndex, subtipo: subtipoIndex }
 }
 
-let showNinDesk = ref(false);
-const isNinDeskOpen = () => {
-    showNinPort.value = false;
-    showNinDesk.value = !showNinDesk.value;
-}
-
-// Consoles da Sega
-let showSega = ref(false);
-const isSegaOpen = () => {
-    closeSubMenus();
-    showSega.value = !showSega.value;
-}
-
-let showSegaPort = ref(false);
-const isSegaPortOpen = () => {
-    showSegaDesk.value = false;
-    showSegaPort.value = !showSegaPort.value;
-}
-
-let showSegaDesk = ref(false);
-const isSegaDeskOpen = () => {
-    showSegaPort.value = false;
-    showSegaDesk.value = !showSegaDesk.value;
-}
-
-// Consoles da Sony
-let showSony = ref(false);
-const isSonyOpen = () => {
-    closeSubMenus();
-    showSony.value = !showSony.value;
-}
-
-let showSonyPort = ref(false);
-const isSonyPortOpen = () => {
-    showSonyDesk.value = false;
-    showSonyPort.value = !showSonyPort.value;
-}
-
-let showSonyDesk = ref(false);
-const isSonyDeskOpen = () => {
-    showSonyPort.value = false;
-    showSonyDesk.value = !showSonyDesk.value;
-}
-
-const closeSubMenus = () => {
-    // Nintendo flags 
-    showNintendo.value = false;
-    showNinDesk.value = false;
-    showNinPort.value = false;
-    // Sega flags
-    showSega.value = false;
-    showSegaPort.value = false;
-    showSegaDesk.value = false;
-    // Sony flags 
-    showSony.value = false;
-    showSonyPort.value = false;
-    showSonyDesk.value = false;
-}
-
-const closeMenu = () => {
-    show.value = false;
-    closeSubMenus();
+const hideSubtipoSubmenu = () => {
+    activeSubtipoSubmenu.value = { empresa: null, subtipo: null }
 }
 </script>
 
@@ -103,174 +129,52 @@ const closeMenu = () => {
                     @click="closeMenu">
                     Home
                 </RouterLink>
-
-                <button
+                <RouterLink to="/"
                     class="text-gray-800 dark:text-gray-100 border-b-2 border-transparent hover:text dark:hover:text-gray-200 hover:border-indigo-700 mx-1.5 sm:mx-6"
-                    @click="isOpen">Consoles
-                </button>
-                <!-- Console Dropdown menu-->
-                <div v-show="show" class="absolute py-2 mt-2 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-48">
-                    <!-- Nintendo Dropdown submenu-->
-                    <RouterLink to="#"
-                        class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white"
-                        @click="isNintendoOpen">
-                        Nintendo
-                    </RouterLink>
-                    <div v-show="showNintendo"
-                        class="absolute py-2 -mt-10 -mx-60 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-60">
-                        <!-- Submenu de consoles portáteis da Nintendo -->
-                        <RouterLink to="#"
-                            class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white"
-                            @click="isNinPortOpen">
-                            Portáteis
-                        </RouterLink>
-                        <div v-show="showNinPort"
-                            class="absolute py-2 -mt-10 -mx-60 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-60">
-                            <RouterLink to="/consoles"
-                                class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                                GameBoy / GameBoy Color
-                            </RouterLink>
-                            <RouterLink to="/consoles"
-                                class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                                GameBoy Advance
-                            </RouterLink>
-                            <RouterLink to="/consoles"
-                                class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                                Nintendo DS
-                            </RouterLink>
-                            <RouterLink to="/consoles"
-                                class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                                Nintendo 3DS
-                            </RouterLink>
+                    @mouseover="openMenu">
+                    Consoles
+                </RouterLink>
+                <div v-show="isOpen" class="absolute py-2 mt-2 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-48">
+                    <!-- Iterar sobre as empresas -->
+                    <template v-for="(empresa, empresaIndex) in empresas" :key="empresaIndex">
+                        <!-- Item de menu para a empresa -->
+                        <div class="relative" @mouseover="showEmpresaSubmenu(empresaIndex)"
+                            @mouseleave="hideEmpresaSubmenu()">
+                            <div
+                                class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white cursor-pointer">
+                                {{ empresa.name }}
+                            </div>
+                            <!-- Submenu para os subtipos de consoles -->
+                            <div v-show="activeEmpresaSubmenu === empresaIndex"
+                                class="absolute top-0 left-48 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-36">
+                                <!-- Iterar sobre os subtipos de consoles -->
+                                <template v-for="(subtipo, subtipoIndex) in empresa.subtipos" :key="subtipoIndex">
+                                    <!-- Item de menu para o subtipo de console -->
+                                    <div class="relative" @mouseover="showSubtipoSubmenu(empresaIndex, subtipoIndex)"
+                                        @mouseleave="hideSubtipoSubmenu()">
+                                        <div
+                                            class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white cursor-pointer">
+                                            {{ subtipo.name }}
+                                        </div>
+
+                                        <!-- Submenu para os consoles -->
+                                        <div v-show="activeSubtipoSubmenu.empresa === empresaIndex && activeSubtipoSubmenu.subtipo === subtipoIndex"
+                                            class="absolute top-0 left-36 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-full">
+                                            <!-- Iterar sobre os consoles -->
+                                            <template v-for="(console, consoleIndex) in subtipo.consoles"
+                                                :key="consoleIndex">
+                                                <!-- Item de menu para o console -->
+                                                <RouterLink :to="console.route"
+                                                    class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white w-full">
+                                                    {{ console.name }}
+                                                </RouterLink>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
                         </div>
-                        <!-- Submenu de consoles de mesa da Nintendo -->
-                        <RouterLink to="#"
-                            class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white"
-                            @click="isNinDeskOpen">
-                            Consoles de Mesa
-                        </RouterLink>
-                        <div v-show="showNinDesk"
-                            class="absolute py-2 -mt-10 -mx-60 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-60">
-                            <RouterLink to="/consoles"
-                                class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                                NES / Famicon
-                            </RouterLink>
-                            <RouterLink to="/consoles"
-                                class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                                Super Nintendo / Super Famicom
-                            </RouterLink>
-                            <RouterLink to="/consoles"
-                                class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                                Nintendo 64
-                            </RouterLink>
-                            <RouterLink to="/consoles"
-                                class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                                GameCube
-                            </RouterLink>
-                        </div>
-                    </div>
-                    <!-- Sega Dropdown Submenu-->
-                    <RouterLink to="#"
-                        class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white"
-                        @click="isSegaOpen">
-                        Sega
-                    </RouterLink>
-                    <!-- Submenu de consoles portáteis da Sega -->
-                    <div v-show="showSega"
-                        class="absolute py-2 -mt-10 -mx-60 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-60">
-                        <RouterLink to="#"
-                            class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white"
-                            @click="isSegaPortOpen">
-                            Portáteis
-                        </RouterLink>
-                        <div v-show="showSegaPort"
-                            class="absolute py-2 -mt-10 -mx-60 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-60">
-                            <RouterLink to="/consoles"
-                                class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                                Game Gear
-                            </RouterLink>
-                        </div>
-                        <!-- Submenu de consoles de mesa da Sega -->
-                        <RouterLink to="#"
-                            class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white"
-                            @click="isSegaDeskOpen">
-                            Consoles de Mesa
-                        </RouterLink>
-                        <div v-show="showSegaDesk"
-                            class="absolute py-2 -mt-10 -mx-60 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-60">
-                            <RouterLink to="/consoles"
-                                class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                                Master System
-                            </RouterLink>
-                            <RouterLink to="/consoles"
-                                class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                                Mega Drive / Genesis
-                            </RouterLink>
-                            <RouterLink to="/consoles"
-                                class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                                Saturn
-                            </RouterLink>
-                            <RouterLink to="/consoles"
-                                class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                                DreamCast
-                            </RouterLink>
-                        </div>
-                    </div>
-                    <!-- Sony Dropdown Submenu-->
-                    <RouterLink to="#"
-                        class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white"
-                        @click="isSonyOpen">
-                        Sony
-                    </RouterLink>
-                    <div v-show="showSony"
-                        class="absolute py-2 -mt-10 -mx-60 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-60">
-                        <!-- Submenu de consoles portáteis da Sega -->
-                        <RouterLink to="#"
-                            class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white"
-                            @click="isSonyPortOpen">
-                            Portáteis
-                        </RouterLink>
-                        <div v-show="showSonyPort"
-                            class="absolute py-2 -mt-10 -mx-60 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-60">
-                            <RouterLink to="/consoles"
-                                class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                                Playstation Portable / PSP
-                            </RouterLink>
-                            <RouterLink to="/consoles"
-                                class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                                Playstation Vita / PSVita
-                            </RouterLink>
-                        </div>
-                        <!-- Submenu de consoles de mesa da Sony -->
-                        <RouterLink to="#"
-                            class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white"
-                            @click="isSonyDeskOpen">
-                            Consoles de Mesa
-                        </RouterLink>
-                        <div v-show="showSonyDesk"
-                            class="absolute py-2 -mt-10 -mx-60 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-60">
-                            <RouterLink to="/consoles"
-                                class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                                Playstation 1 (PSOne)
-                            </RouterLink>
-                            <RouterLink to="/consoles"
-                                class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                                Playstation 2
-                            </RouterLink>
-                            <RouterLink to="/consoles"
-                                class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                                Playstation 3
-                            </RouterLink>
-                        </div>
-                    </div>
-                    <RouterLink to="/consoles"
-                        class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                        3DO
-                    </RouterLink>
-                    <RouterLink to="/consoles"
-                        class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                        SNK
-                    </RouterLink>
+                    </template>
                 </div>
                 <RouterLink to="/contato"
                     class="text-gray-800 dark:text-gray-100 border-b-2 border-transparent hover:text dark:hover:text-gray-200 hover:border-indigo-700 mx-1.5 sm:mx-6"
@@ -280,5 +184,4 @@ const closeMenu = () => {
             </div>
         </div>
     </nav>
-
 </template>
