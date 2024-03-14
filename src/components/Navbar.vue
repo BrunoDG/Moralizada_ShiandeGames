@@ -115,7 +115,7 @@ const closeMenu = () => {
                         </RouterLink>
                         <RouterLink to="/consoles"
                             class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
-                            Sega Saturn
+                            Saturn
                         </RouterLink>
                         <RouterLink to="/consoles"
                             class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
