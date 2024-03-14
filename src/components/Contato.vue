@@ -1,4 +1,3 @@
 <template>
-
     Contato
 </template>
