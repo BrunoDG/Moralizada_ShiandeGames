@@ -117,7 +117,8 @@ const hideSubtipoSubmenu = () => {
 </script>
 
 <template>
-    <nav class="bg-white border-gray-200 dark:bg-indigo-950 dark:border-gray-700">
+    <nav
+        class="fixed top-0 min-w-full z-10 bg-white border-gray-200 dark:bg-indigo-950 dark:border-gray-700">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
             <RouterLink to="/" class="flex items-center space-x-3 rtl:space-x-reverse" @click="closeMenu">
                 <span
