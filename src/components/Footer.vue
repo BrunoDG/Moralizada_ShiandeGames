@@ -1,3 +1,6 @@
+
+import { RouterLink } from 'vue-router';
+import { RouterLink } from 'vue-router';
 <template>
     <footer class="fixed bottom-0 bg-[#00050e] pt-8 pb-6 mx-auto px-auto align-middle w-full">
         <div class="container mx-auto px-4">
@@ -87,13 +90,21 @@
             </div>
             <hr class="my-6 border-cyan-300">
             <div class="flex flex-wrap items-center md:justify-between justify-center">
-                <div class="w-full md:w-4/12 px-4 mx-auto text-center">
+                <div class="w-full md:w-5/12 px-4 mx-auto text-center">
                     <div class="text-sm text-white font-semibold py-1">
                         Copyright © <span id="get-current-year">2024</span>
-                        <a href="https://twitch.tv/shiandegames" class="text-indigo-500 hover:text-indigo-800">
+                        <span class="text-indigo-600">
                             ShiandeGames
-                        </a>. Todos os direitos reservados.
+                        </span> e
+                        <span class="text-rose-600">
+                            Bevel Drive</span>.
+                        Todos os direitos reservados.
                     </div>
+                </div>
+                <div>
+                    <a href="mailto://contato@beveldrive.com.br">
+                        <img src="@/assets/images/Beveldrive_logo.png" alt="Bevel Drive Logo" class="w-10 h-10">
+                    </a>
                 </div>
             </div>
         </div>
