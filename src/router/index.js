@@ -4,7 +4,6 @@ import Home from "@/components/Home.vue";
 import Consoles from "@/components/Consoles.vue";
 import Contato from "@/components/Contato.vue";
 
-
 const routes = [
     { path: "/", name: "Home", component: Home },
     { path: "/consoles/:console", name: "Consoles", component: Consoles },
@@ -12,10 +11,11 @@ const routes = [
     { path: "/Moralizada_ShiandeGames/", redirect: "/"}
 ];
 
+const base = "/Moralizada_ShiandeGames/";
+
 const router = createRouter({
-    history: createWebHistory(),
-    base: "/Moralizada_ShiandeGames/",
-    routes
+  history: createWebHistory(base),
+  routes,
 });
 
 export default router;
