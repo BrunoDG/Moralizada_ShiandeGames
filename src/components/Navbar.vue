@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
 //Import from js file
-import empresas from '@/data/consoles'
+import empresas from '@/data/empresas'
 
 const props = defineProps(['title'])
 
@@ -35,9 +35,8 @@ const hideSubtipoSubmenu = () => {
 </script>
 
 <template>
-    <nav
-        class="fixed top-0 min-w-full z-10 bg-white border-gray-200 dark:bg-indigo-950 dark:border-gray-700">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
+    <nav class="fixed top-0 min-w-full z-10 bg-white border-gray-200 dark:bg-indigo-950 dark:border-gray-700">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-1">
             <RouterLink to="/" class="flex items-center space-x-3 rtl:space-x-reverse" @click="closeMenu">
                 <span
                     class="self-center text-3xl font-sega text-indigo-800 whitespace-nowrap dark:text-white">{{title}}</span>
@@ -53,7 +52,8 @@ const hideSubtipoSubmenu = () => {
                     @mouseover="openMenu">
                     Consoles
                 </RouterLink>
-                <div v-show="isOpen" class="absolute py-2 mt-2 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-48">
+                <div v-if="isOpen" class="absolute py-2 mt-2 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-48"
+                    @mouseleave="closeMenu">
                     <!-- Iterar sobre as empresas -->
                     <template v-for="(empresa, empresaIndex) in empresas" :key="empresaIndex">
                         <!-- Item de menu para a empresa -->
@@ -64,7 +64,7 @@ const hideSubtipoSubmenu = () => {
                                 {{ empresa.name }}
                             </div>
                             <!-- Submenu para os subtipos de consoles -->
-                            <div v-show="activeEmpresaSubmenu === empresaIndex"
+                            <div v-if="activeEmpresaSubmenu === empresaIndex"
                                 class="absolute top-0 left-48 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-36">
                                 <!-- Iterar sobre os subtipos de consoles -->
                                 <template v-for="(subtipo, subtipoIndex) in empresa.subtipos" :key="subtipoIndex">
@@ -77,7 +77,7 @@ const hideSubtipoSubmenu = () => {
                                         </div>
 
                                         <!-- Submenu para os consoles -->
-                                        <div v-show="activeSubtipoSubmenu.empresa === empresaIndex && activeSubtipoSubmenu.subtipo === subtipoIndex"
+                                        <div v-if="activeSubtipoSubmenu.empresa === empresaIndex && activeSubtipoSubmenu.subtipo === subtipoIndex"
                                             class="absolute top-0 left-36 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-full">
                                             <!-- Iterar sobre os consoles -->
                                             <template v-for="(console, consoleIndex) in subtipo.consoles"
@@ -92,7 +92,7 @@ const hideSubtipoSubmenu = () => {
                                     </div>
                                 </template>
                             </div>
-                        </div>
+                        </div>l
                     </template>
                 </div>
                 <RouterLink to="/contato"
@@ -103,4 +103,4 @@ const hideSubtipoSubmenu = () => {
             </div>
         </div>
     </nav>
-</template>
+</template>@/data/empresas

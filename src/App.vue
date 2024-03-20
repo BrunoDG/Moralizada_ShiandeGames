@@ -8,6 +8,6 @@ import Footer from '@/components/Footer.vue'
   <div id="app" class="bg-[url('./assets/images/titleIcon.png')] bg-no-repeat bg-cover bg-center bg-fixed min-h-screen">
     <Navbar title="ShiandeGames" />
     <RouterView></RouterView>
-    <Footer />
+    <Footer></Footer>
   </div>
 </template>
