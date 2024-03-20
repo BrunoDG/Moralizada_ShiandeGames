@@ -145,14 +145,12 @@ function darkMode() {
                         </RouterLink>
                     </li>
                     <li
-                        class="text-gray-800 dark:text-gray-100 border-b-2 border-transparent hover:text dark:hover:text-gray-200 hover:border-indigo-700 mx-1.5 sm:mx-6">
-                        <RouterLink to="/">
+                        class="text-gray-800 dark:text-gray-100 border-b-4 border-transparent hover:text dark:hover:text-gray-200 hover:border-indigo-700 mx-1.5 sm:mx-6">
                             Consoles <span class="icon-[ph--caret-down]"></span>
-                        </RouterLink>
                     </li>
                     <li
                         class="text-gray-800 dark:text-gray-100 border-b-2 border-transparent hover:text dark:hover:text-gray-200 hover:border-indigo-700 mx-1.5 sm:mx-6">
-                        <RouterLink to="/">
+                        <RouterLink to="/Contato">
                             Contato
                         </RouterLink>
                     </li>
