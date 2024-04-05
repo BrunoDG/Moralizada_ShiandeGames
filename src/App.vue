@@ -6,11 +6,9 @@ import Footer from '@/components/Footer.vue'
 
 <template>
   <div id="app"
-    class="bg-[url('./assets/images/titleIcon.png')] bg-no-repeat bg-cover bg-center bg-fixed fkex flex-col h-screen">
+    class="bg-[url('./assets/images/titleIcon.png')] bg-repeat bg-cover bg-center bg-fixed flex flex-col h-screen">
     <Navbar title="ShiandeGames" />
-    <div class="flex-grow">
-      <RouterView class="flex grow justify-center w-full"></RouterView>
-    </div>
+      <RouterView />
     <Footer></Footer>
   </div>
 </template>

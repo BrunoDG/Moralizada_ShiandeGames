@@ -15,9 +15,7 @@
                 flex 
                 flex-row 
                 items-center 
-                w-4/5 
-                translate-y-1/2 
-                bg-white 
+                w-4/5
                 bg-opacity-30 
                 backdrop-blur-lg 
                 mx-auto 
@@ -30,7 +28,7 @@
             </button>
         </div>
 
-        <div class="w-4/5 translate-y-1/2 bg-white bg-opacity-30 backdrop-blur-lg mx-auto drop-shadow-lg">
+        <div class="w-4/5 my-4 bg-opacity-30 backdrop-blur-lg mx-auto drop-shadow-lg">
             <table class="w-full border-collapse">
                 <thead>
                     <tr>

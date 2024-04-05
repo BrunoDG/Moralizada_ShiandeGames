@@ -1,10 +1,10 @@
 <template>
     <footer>
-        <div class="p-4 bg-indigo-900 dark:bg-white md:flex md:items-center md:justify-between">
+        <div class="p-4 dark:bg-indigo-950 bg-white md:flex md:items-center md:justify-between">
             <div class="container mx-auto px-4">
                 <div class="flex flex-wrap text-left lg:text-left">
                     <div class="w-full lg:w-6/12 px-4 text-white">
-                        <h4 class="text-3xl font-semibold text-indigo-700">Fala comigo!</h4>
+                        <h4 class="text-3xl font-semibold dark:text-white text-indigo-700">Fala comigo!</h4>
                         <h5 class="text-lg mt-0 mb-2">
                             Você consegue me encontrar nessas plataformas pra dar aquela moralizada malakoi.
                         </h5>
