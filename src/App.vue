@@ -5,9 +5,10 @@ import Footer from '@/components/Footer.vue'
 </script>
 
 <template>
-  <div id="app" class="bg-[url('./assets/images/titleIcon.png')] bg-no-repeat bg-cover bg-center bg-fixed min-h-screen">
-    <Navbar title="ShiandeGames" />
-    <RouterView></RouterView>
-    <Footer></Footer>
+  <div id="app"
+    class="bg-[url('./assets/images/titleIcon.png')] bg-repeat bg-cover bg-center bg-fixed flex flex-col min-h-screen">
+      <Navbar title="ShiandeGames" />
+      <RouterView />
+      <Footer></Footer>
   </div>
 </template>

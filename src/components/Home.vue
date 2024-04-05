@@ -1,7 +1,6 @@
 <template>
-    <div class="container mx-auto py-8">
-        <div
-            class="translate-y-1/2 bg-white bg-opacity-30 backdrop-blur-lg rounded-2xl drop-shadow-lg">
+    <div class="flex flex-grow mx-auto my-auto">
+        <div class="container bg-white bg-opacity-30 backdrop-blur-lg rounded-2xl mx-auto my-auto">
             <div class="text-indigo-900 p-12">
                 <h1 class="text-2xl text-center font-bold"> Bem vindos à página mais salivante da internet!</h1>
                 <br />
