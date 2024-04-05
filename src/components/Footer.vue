@@ -3,9 +3,9 @@
         <div class="p-4 dark:bg-indigo-950 bg-white md:flex md:items-center md:justify-between">
             <div class="container mx-auto px-4">
                 <div class="flex flex-wrap text-left lg:text-left">
-                    <div class="w-full lg:w-6/12 px-4 text-white">
+                    <div class="w-full lg:w-6/12 px-4">
                         <h4 class="text-3xl font-semibold dark:text-white text-indigo-700">Fala comigo!</h4>
-                        <h5 class="text-lg mt-0 mb-2">
+                        <h5 class="text-lg mt-0 mb-2 dark:text-white text-indigo-700">
                             Você consegue me encontrar nessas plataformas pra dar aquela moralizada malakoi.
                         </h5>
                         <div class="mt-6 lg:mb-0 mb-6">
@@ -39,7 +39,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="w-full lg:w-6/12 px-4 text-white">
+                    <div class="w-full lg:w-6/12 px-4 dark:text-white text-indigo-900">
                         <div class="flex flex-wrap items-top mb-6">
                             <div class="w-full lg:w-4/12 px-4 ml-auto">
                                 <span class="block uppercase text-blueGray-500 text-sm font-semibold mb-2">Links úteis
