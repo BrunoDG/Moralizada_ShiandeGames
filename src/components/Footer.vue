@@ -42,7 +42,7 @@
                     <div class="w-full lg:w-6/12 px-4 dark:text-white text-indigo-900">
                         <div class="flex flex-wrap items-top mb-6">
                             <div class="w-full lg:w-4/12 px-4 ml-auto">
-                                <span class="block uppercase text-blueGray-500 text-sm font-semibold mb-2">Links úteis
+                                <span class="block uppercase text-blueGray-500 text-md font-semibold mb-2">Links úteis
                                 </span>
                                 <ul class="list-unstyled">
                                     <li>
@@ -53,7 +53,7 @@
                                 </ul>
                             </div>
                             <div class="w-full lg:w-4/12 px-4">
-                                <span class="block uppercase text-blueGray-500 text-sm font-semibold mb-2">
+                                <span class="block uppercase text-blueGray-500 text-md font-semibold mb-2">
                                     Desenvolvido por
                                 </span>
                                 <ul class="list-unstyled">
@@ -89,7 +89,7 @@
                 <hr class="my-6 border-cyan-300">
                 <div class="flex flex-wrap items-center md:justify-between justify-center">
                     <div class="w-full md:w-5/12 px-4 mx-auto text-center">
-                        <div class="text-sm text-white font-semibold py-1">
+                        <div class="text-sm dark:text-white text-indigo-900 font-semibold py-1">
                             Copyright © <span id="get-current-year">2024</span>
                             <span class="text-indigo-600">
                                 ShiandeGames
