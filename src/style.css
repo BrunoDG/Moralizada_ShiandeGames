@@ -6,3 +6,7 @@
     font-family: 'sega';
     src: url('./assets/fonts/sega/SEGA.woff');
 }
+
+body * {
+    @apply transition-colors duration-200;
+}

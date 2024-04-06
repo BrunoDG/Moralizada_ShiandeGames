@@ -35,7 +35,7 @@ const hideSubtipoSubmenu = () => {
 
 let darkModeOn = false;
 
-function darkMode() {
+const darkMode = () => {
     if (localStorage.theme === 'dark' || (
         !('theme' in localStorage) &&
         window.matchMedia('(prefers-color-scheme: dark)').matches) &&
@@ -47,6 +47,10 @@ function darkMode() {
         document.documentElement.classList.remove('dark')
         darkModeOn = false;
     }
+}
+
+const consoleSelecionado = () => {
+    
 }
 
 </script>
@@ -73,57 +77,70 @@ function darkMode() {
                         @mouseover="openMenu">
                         Consoles <span class="icon-[ph--caret-down]"></span>
                     </li>
-                    <div v-if="isOpen" class="absolute py-6 mt-6 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-48"
-                        @mouseleave="closeMenu">
-                        <!-- Iterar sobre as empresas -->
-                        <template v-for="(empresa, empresaIndex) in empresas" :key="empresaIndex">
-                        <!-- Item de menu para a empresa -->
-                            <div class="relative" @mouseover="showEmpresaSubmenu(empresaIndex)"
-                                @mouseleave="hideEmpresaSubmenu()">
-                                <div
-                                    class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white cursor-pointer">
-                                    {{ empresa.name }}
-                                </div>
-                        <!-- Submenu para os subtipos de consoles -->
-                            <div v-if="activeEmpresaSubmenu === empresaIndex"
-                                class="absolute top-0 left-48 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-36">
-                        <!-- Iterar sobre os subtipos de consoles -->
-                                <template v-for="(subtipo, subtipoIndex) in empresa.subtipos" :key="subtipoIndex">
-                        <!-- Item de menu para o subtipo de console -->
-                                    <div class="relative" @mouseover="showSubtipoSubmenu(empresaIndex, subtipoIndex)"
-                                        @mouseleave="hideSubtipoSubmenu()">
-                                        <div
-                                            class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white cursor-pointer">
-                                            {{ subtipo.name }}
-                                        </div>
-                        <!-- Submenu para os consoles -->
-                                        <div v-if="activeSubtipoSubmenu.empresa === empresaIndex && activeSubtipoSubmenu.subtipo === subtipoIndex"
-                                            class="absolute top-0 left-36 bg-white dark:bg-indigo-950 rounded-sm shadow-xl w-full">
-                        <!-- Iterar sobre os consoles -->
-                                            <template v-for="(console, consoleIndex) in subtipo.consoles"
-                                                :key="consoleIndex">
-                        <!-- Item de menu para o console -->
-                                                <RouterLink :to="console.route"
-                                                    class="block px-4 py-2 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white w-full">
-                                                    {{ console.name }}
-                                                </RouterLink>
-                                            </template>
-                                        </div>
+                    <transition 
+                        enter-active-class="transform transition duration-500 ease-custom"
+                        enter-class="-translate-y-1/2 scale-y-0 opacity-0"
+                        enter-to-class="translate-y-0 scale-y-100 opacity-100"
+                        leave-active-class="transform transition duration-300 ease-custom"
+                        leave-class="translate-y-0 scale-y-100 opacity-100"
+                        leave-to-class="-translate-y-1/2 scale-y-0 opacity-0"
+                    >
+                        <div v-if="isOpen"
+                            class="absolute py-6 mt-7 bg-white dark:bg-indigo-950 shadow-xl w-48"
+                            @mouseleave="closeMenu">
+                            <!-- Iterar sobre as empresas -->
+                            <template v-for="(empresa, empresaIndex) in empresas" :key="empresaIndex">
+                                <!-- Item de menu para a empresa -->
+                                <div class="relative" @mouseover="showEmpresaSubmenu(empresaIndex)"
+                                    @mouseleave="hideEmpresaSubmenu()">
+                                    <div
+                                        class="px-4 py-4 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
+                                        {{ empresa.name }}
                                     </div>
-                                </template>
-                            </div>
-                        </div>l
-                    </template>
-                </div>
-                    <li
-                        class="text-gray-800 dark:text-gray-100 border-b-2 border-transparent hover:text dark:hover:text-gray-200 hover:border-indigo-700 mx-1.5 sm:mx-6">
-                        <RouterLink to="/Contato">
-                            Contato
-                        </RouterLink>
-                    </li>
+                                    <!-- Submenu para os subtipos de consoles -->
+                                    <div v-if="activeEmpresaSubmenu === empresaIndex"
+                                        class="absolute top-0 right-48 bg-white dark:bg-indigo-950 shadow-xl w-48">
+                                        <!-- Iterar sobre os subtipos de consoles -->
+                                        <template v-for="(subtipo, subtipoIndex) in empresa.subtipos"
+                                            :key="subtipoIndex">
+                                            <!-- Item de menu para o subtipo de console -->
+                                            <div class="relative"
+                                                @mouseover="showSubtipoSubmenu(empresaIndex, subtipoIndex)"
+                                                @mouseleave="hideSubtipoSubmenu()">
+                                                <div
+                                                    class="block px-4 py-4 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white">
+                                                    {{ subtipo.name }}
+                                                </div>
+                                                <!-- Submenu para os consoles -->
+                                                <div v-if="activeSubtipoSubmenu.empresa === empresaIndex && activeSubtipoSubmenu.subtipo === subtipoIndex"
+                                                    class="absolute top-0 right-48 bg-white dark:bg-indigo-950 shadow-xl w-full">
+                                                    <!-- Iterar sobre os consoles -->
+                                                    <template v-for="console in subtipo.consoles"
+                                                        :key="consoleIndex">
+                                                        <!-- Item de menu para o console -->
+                                                        <RouterLink :to="console.route"
+                                                            class="block px-4 py-4 text-sm text-indigo-800 dark:text-white hover:bg-indigo-700 hover:text-white w-full">
+                                                            {{ console.name }}
+                                                        </RouterLink>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>l
+                            </template>
+                        </div>
+                    </transition>
+                        <li
+                            class="text-gray-800 dark:text-gray-100 border-b-2 border-transparent hover:text dark:hover:text-gray-200 hover:border-indigo-700 mx-1.5 sm:mx-6">
+                            <RouterLink to="/Contato">
+                                Contato
+                            </RouterLink>
+                        </li>
                 </ul>
                 <button type="button" @click="darkMode">
-                    <span class="text-4xl icon-[ph--moon-stars-fill] text-indigo-900 dark:icon-[ph--sun-fill] dark:text-yellow-400">
+                    <span
+                        class="text-4xl icon-[ph--moon-stars-fill] text-indigo-900 dark:icon-[ph--sun-fill] dark:text-yellow-400">
                     </span>
                 </button>
             </div>
